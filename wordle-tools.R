@@ -81,3 +81,82 @@ rare_letter_cnt <- function(word_vec) {
   result
   
 }
+
+
+replace_chr <- function(word, pos, replace_chr) {
+  
+  result <- paste0(
+    substr(word, 1, pos-1),
+    replace_chr,
+    substr(word, pos+1, 5)
+  )
+  
+  result
+  
+}
+
+one_word_score <- function(word_test, word_right)  {
+  
+  if (substr(word_test, 1, 1) == substr(word_right, 1, 1)) {
+      score <- score + 2
+      word_test <- replace_chr(word_test, 1, "X")
+      word_right <- replace_chr(word_right, 1, "P")
+  }
+
+  if (substr(word_test, 2, 2) == substr(word_right, 2, 2)) {
+    score <- score + 2
+    word_test <- replace_chr(word_test, 2, "X")
+    word_right <- replace_chr(word_right, 2, "P")
+  }
+  
+  if (substr(word_test, 3, 3) == substr(word_right, 3, 3)) {
+    score <- score + 2
+    word_test <- replace_chr(word_test, 3, "X")
+    word_right <- replace_chr(word_right, 3, "P")
+  }
+  
+  if (substr(word_test, 4, 4) == substr(word_right, 4, 4)) {
+    score <- score + 2
+    word_test <- replace_chr(word_test, 4, "X")
+    word_right <- replace_chr(word_right, 4, "P")
+  }
+  
+  for (i in 1:5) {
+    
+    check <- substr(word_test, i,i) == unlist(strsplit(word_right, ""))
+    if (any(check)) {
+      score <- score + 1
+      word_test <- replace_chr(word_test, i, "X")
+      word_right <- replace_chr(word_right, which(check)[1], "C")
+    }  
+    
+  }
+ 
+  score  
+  
+}  
+
+word_score <- function(word, word_vec) {
+  
+  score_total <- 0
+  
+  for (i in seq_along(word_vec))  {
+    
+    score <- one_word_score(word, word_vec[i])
+    score_total <- score_total + score
+  }
+  
+  score_total
+  
+}
+
+# word_score("einer", word_vec)   ##161
+# word_score("adieu", word_vec)   ##157
+# word_score("raten", word_vec)   ##153
+# word_score("tarne", word_vec)   ##146
+# word_score("autos", word_vec)   ##142
+# word_score("audio", word_vec)   ##141
+# word_score("musik", word_vec)   ##139
+
+
+
