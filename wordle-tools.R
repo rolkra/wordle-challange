@@ -40,3 +40,43 @@ unique_letter_cnt <- function(word_vec)  {
 }
 
 unique_letter_cnt(c("autos", "gummi", "banal"))
+
+
+common_letter_cnt <- function(word_vec) {
+  
+  tmp <- data.frame(
+    chr = unlist(strsplit(word_vec, "")) )
+  
+  all <- data.frame(chr = letters)
+  tmp <- rbind(tmp, all)
+  
+  freq <- tmp |> count(chr) |> arrange(-n)
+  common <- head(freq, 10)
+  
+  result <- contains_letter_cnt(
+    paste(common$chr, collapse = ""), 
+    word_vec)
+  
+  result
+  
+}
+
+rare_letter_cnt <- function(word_vec) {
+  
+  tmp <- data.frame(
+    chr = unlist(strsplit(word_vec, "")) )
+  
+  all <- data.frame(chr = letters)
+  
+  tmp <- rbind(tmp, all)
+  
+  freq <- tmp |> count(chr) |> arrange(-n)
+  rare <- tail(freq, 10)
+  
+  result <- contains_letter_cnt(
+    paste(rare$chr, collapse = ""), 
+    word_vec)
+  
+  result
+  
+}
