@@ -42,7 +42,7 @@ unique_letter_cnt <- function(word_vec)  {
 unique_letter_cnt(c("autos", "gummi", "banal"))
 
 
-common_letter_cnt <- function(word_vec) {
+letter_cnt <- function(word_vec)  {
   
   tmp <- data.frame(
     chr = unlist(strsplit(word_vec, "")) )
@@ -50,7 +50,15 @@ common_letter_cnt <- function(word_vec) {
   all <- data.frame(chr = letters)
   tmp <- rbind(tmp, all)
   
-  freq <- tmp |> count(chr) |> arrange(-n)
+  freq <- tmp |> count(chr) |> arrange(chr)
+  freq$n <- freq$n -1
+  freq
+  
+}
+
+common_letter_cnt <- function(word_vec) {
+  
+  freq <- letter_cnt(word_vec) |> arrange(-n)
   common <- head(freq, 10)
   
   result <- contains_letter_cnt(
@@ -63,14 +71,7 @@ common_letter_cnt <- function(word_vec) {
 
 rare_letter_cnt <- function(word_vec) {
   
-  tmp <- data.frame(
-    chr = unlist(strsplit(word_vec, "")) )
-  
-  all <- data.frame(chr = letters)
-  
-  tmp <- rbind(tmp, all)
-  
-  freq <- tmp |> count(chr) |> arrange(-n)
+  freq <- letter_cnt(word_vec) |> arrange(-n)
   rare <- tail(freq, 10)
   
   result <- contains_letter_cnt(

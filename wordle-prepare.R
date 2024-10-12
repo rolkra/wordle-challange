@@ -3,6 +3,8 @@ library(explore)
 source("wordle-tools.R")
 
 data_ori <- read.csv("wordle-data.csv")
+data_ori$word <- tolower(data_ori$word)
+data_ori$word <- substr(data_ori$word, 1, 5)
 
 data_a <- data_ori |> 
   mutate(player = "Player A") |> 
@@ -24,3 +26,8 @@ data <- data |>
     common = common_letter_cnt(word),
     rare = rare_letter_cnt(word)
   )
+
+cnt <- letter_cnt(data$word)
+cnt$n <- cnt$n/2
+cnt |> explore(chr, n)
+ 
