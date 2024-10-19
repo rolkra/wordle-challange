@@ -9,12 +9,14 @@ data_ori$word <- substr(data_ori$word, 1, 5)
 data_a <- data_ori |> 
   mutate(player = "Player A") |> 
   mutate(try = try_player_a) |> 
-  select(word, noun, player, try)
+  add_var_id(name = "round") |> 
+  select(round, word, noun, player, try)
 
 data_b <- data_ori |> 
   mutate(player = "Player B") |> 
   mutate(try = try_player_b) |> 
-  select(word, noun, player, try)
+  add_var_id(name = "round") |> 
+  select(round, word, noun, player, try)
 
 data <- rbind(data_a, data_b)
 View(data)

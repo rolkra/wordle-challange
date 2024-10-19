@@ -97,6 +97,8 @@ replace_chr <- function(word, pos, replace_chr) {
 
 one_word_score <- function(word_test, word_right)  {
   
+  score <- 0
+  
   if (substr(word_test, 1, 1) == substr(word_right, 1, 1)) {
       score <- score + 2
       word_test <- replace_chr(word_test, 1, "X")
@@ -150,12 +152,14 @@ word_score <- function(word, word_vec) {
   
 }
 
-# word_score("einer", word_vec)   ##161
-# word_score("adieu", word_vec)   ##157
-# word_score("raten", word_vec)   ##153
-# word_score("tarne", word_vec)   ##146
-# word_score("autos", word_vec)   ##142
-# word_score("audio", word_vec)   ##141
+word_vec <- data_ori$word
+
+# word_score("einer", word_vec)   ##94 ##161
+# word_score("adieu", word_vec)   ##88 ##157
+# word_score("raten", word_vec)   ##95 ##153
+# word_score("tarne", word_vec)   ##90 ##146
+# word_score("autos", word_vec)   ##69 ##142
+# word_score("audio", word_vec)   ##63 ##141
 # word_score("musik", word_vec)   ##139
 
 
