@@ -32,4 +32,5 @@ data <- data |>
 cnt <- letter_cnt(data$word)
 cnt$n <- cnt$n/2
 cnt |> explore(chr, n)
+cnt |> arrange(-n) |> head(10)
  
