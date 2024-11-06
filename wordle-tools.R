@@ -152,7 +152,7 @@ word_score <- function(word, word_vec) {
   
 }
 
-word_vec <- data_ori$word
+# word_vec <- data_ori$word
 
 # word_score("einer", word_vec)   ##94 ##161
 # word_score("adieu", word_vec)   ##88 ##157
@@ -162,12 +162,12 @@ word_vec <- data_ori$word
 # word_score("audio", word_vec)   ##63 ##141
 # word_score("musik", word_vec)   ##139
 
-word_score("autor", word_vec)   ##99
-word_score("eiter", word_vec)   ##132
-word_score("einer", word_vec)   ##124
-word_score("raten", word_vec)   ##129
-word_score("linse", word_vec)   ##112
-word_score("musik", word_vec)   ##78
+# word_score("autor", word_vec)   ##99
+# word_score("eiter", word_vec)   ##132
+# word_score("einer", word_vec)   ##124
+# word_score("raten", word_vec)   ##129
+# word_score("linse", word_vec)   ##112
+# word_score("musik", word_vec)   ##78
 
-word_score("autor", word_vec)   ##99
+# word_score("autor", word_vec)   ##99
 

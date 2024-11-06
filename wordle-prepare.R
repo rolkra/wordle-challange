@@ -3,8 +3,11 @@ library(explore)
 source("wordle-tools.R")
 
 data_ori <- read.csv("wordle-data.csv")
+names(data_ori) <- c("word", "noun", "try_player_a", "try_player_b", "diff", "diff_cum")
 data_ori$word <- tolower(data_ori$word)
 data_ori$word <- substr(data_ori$word, 1, 5)
+
+data_ori <- data_ori |> filter(!is.na(noun))
 
 data_a <- data_ori |> 
   mutate(player = "Player A") |> 
