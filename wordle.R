@@ -38,8 +38,8 @@ data_all |>
     geom_line(data = data_3, color =  color_3, linewidth = 2) +
     ylab("me better (cummulated)") +
     ylim(c(0,30)) +
-    ggtitle("What you can learn from playing WORDLE") +
-    labs(subtitle = "Against a Data Scientist (me)") +
+    ggtitle("What I learner from playing WORDLE") +
+    labs(subtitle = "As a Data Scientist") +
     theme_minimal() +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.subtitle = element_text(hjust = 0.5)) +
