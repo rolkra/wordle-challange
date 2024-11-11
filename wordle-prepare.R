@@ -37,3 +37,7 @@ cnt$n <- cnt$n/2
 cnt |> explore(chr, n)
 cnt |> arrange(-n) |> head(10)
  
+data |> 
+  mutate(language = "german") |> 
+  select(round, word, language, everything()) |> 
+  saveRDS("wordle.rds")

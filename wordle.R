@@ -37,19 +37,20 @@ data_all |>
     geom_line(data = data_2, color =  color_2, linewidth = 2) +
     geom_line(data = data_3, color =  color_3, linewidth = 2) +
     ylab("me better (cummulated)") +
+    ylim(c(0,30)) +
     ggtitle("What you can learn from playing WORDLE") +
-    labs(subtitle = "Against a Data Scientist (me)\n") +
+    labs(subtitle = "Against a Data Scientist (me)") +
     theme_minimal() +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.subtitle = element_text(hjust = 0.5)) +
     geom_vline(xintercept = 20, color = "darkgrey", linetype = "dashed", linewidth = 0.8, alpha = 0.5) +
     geom_vline(xintercept = 40, color = "darkgrey", linetype = "dashed", linewidth = 0.8, alpha = 0.5) +
     geom_hline(yintercept = 14, color = "darkgrey", linetype = "dashed", linewidth = 0.8, alpha = 0.5) +
-    geom_text(x=10, y=23.2, color = color_1, size = 3.5,
+    geom_text(x=10, y=25, color = color_1, size = 3.5,
               label = "just use logic & intuation\nstart collecting data") +
-    geom_text(x=30, y=23.2, color = color_2, size = 3.5,
+    geom_text(x=30, y=25, color = color_2, size = 3.5,
             label = "your opponent\nwill catch up") +
-    geom_text(x=50, y=23.2, color = color_3, size = 3.5,
+    geom_text(x=50, y=25, color = color_3, size = 3.5,
           label = "use insights\nfrom data") 
 
   
