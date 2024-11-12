@@ -9,6 +9,8 @@ data_ori$word <- substr(data_ori$word, 1, 5)
 
 data_ori <- data_ori |> filter(!is.na(noun))
 
+data_ori |> saveRDS("wordle-ori.rds")
+
 data_a <- data_ori |> 
   mutate(player = "Player A") |> 
   mutate(try = try_player_a) |> 

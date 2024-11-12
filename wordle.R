@@ -2,6 +2,12 @@ library(tidyverse)
 library(explore)
 source("wordle-tools.R")
 
+cnt <- letter_cnt(data$word)
+cnt$n <- cnt$n/2
+cnt |> explore(chr, n, flip = FALSE,
+               title = "Frequency of letters in words",
+               subtitle = "(used in WORDLE game)")
+cnt |> arrange(-n) |> head(10)
 
 data |> explore(try, target = player)
 data |> summarize(mean(try), .by = player) |> explore(player, `mean(try)`)
@@ -38,8 +44,8 @@ data_all |>
     geom_line(data = data_3, color =  color_3, linewidth = 2) +
     ylab("me better (cummulated)") +
     ylim(c(0,30)) +
-    ggtitle("What I learner from playing WORDLE") +
-    labs(subtitle = "As a Data Scientist") +
+    ggtitle("If a Data Scientist plays WORDLE") +
+    labs(subtitle = "against a friend (for 60 days)") +
     theme_minimal() +
     theme(plot.title = element_text(hjust = 0.5)) +
     theme(plot.subtitle = element_text(hjust = 0.5)) +
@@ -47,7 +53,7 @@ data_all |>
     geom_vline(xintercept = 40, color = "darkgrey", linetype = "dashed", linewidth = 0.8, alpha = 0.5) +
     geom_hline(yintercept = 14, color = "darkgrey", linetype = "dashed", linewidth = 0.8, alpha = 0.5) +
     geom_text(x=10, y=25, color = color_1, size = 3.5,
-              label = "just use logic & intuation\nstart collecting data") +
+              label = "just use logic & intuition\nstart collecting data") +
     geom_text(x=30, y=25, color = color_2, size = 3.5,
             label = "your opponent\nwill catch up") +
     geom_text(x=50, y=25, color = color_3, size = 3.5,
@@ -56,7 +62,7 @@ data_all |>
   
 
 
-    word_vec <- data_ori$word
+word_vec <- data_ori$word
 word_score("autor", word_vec)   ##99  #113
 word_score("eiter", word_vec)   ##132 #143
 word_score("einer", word_vec)   ##124 #135
